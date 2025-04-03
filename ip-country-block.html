@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faiq Cybersec | Access Denied</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(26, 26, 26, 0.8) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(45, 45, 45, 0.8) 0%, transparent 50%),
+                linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(255, 59, 48, 0.05) 0%, transparent 50%),
+                linear-gradient(45deg, rgba(255, 59, 48, 0.02) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 
+                0 4px 30px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                0 0 40px rgba(255, 59, 48, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 40px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 0 60px rgba(255, 59, 48, 0.15);
+        }
+
+        .warning-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 59, 48, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .warning-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255, 59, 48, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .warning-icon:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(255, 59, 48, 0.2);
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff3b30;
+            text-shadow: 0 0 20px rgba(255, 59, 48, 0.3);
+        }
+
+        .message {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #e0e0e0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .details {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            transform: translateX(5px);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .label {
+            color: #888;
+            font-weight: 500;
+        }
+
+        .value {
+            color: #fff;
+            font-family: 'Inter', monospace;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            .glass-card {
+                padding: 30px;
+            }
+
+            .warning-icon {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .message {
+                font-size: 14px;
+            }
+
+            .details {
+                padding: 15px;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .label {
+                font-size: 14px;
+            }
+
+            .value {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-card">
+            <div class="warning-icon">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 8V12" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 16H12.01" stroke="#ff3b30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1>Access Denied</h1>
+            <p class="message">Your access to this resource has been restricted due to security policies.</p>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <span class="label">Client IP:</span>
+                    <span class="value" id="client-ip" onclick="revealIP()">Click to reveal</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Location:</span>
+                    <span class="value">::GEO::</span>
+                </div>
+                <div class="detail-item">
+                    <span class="label">Ray ID:</span>
+                    <span class="value">::RAY_ID::</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function revealIP() {
+            const clientIP = '::CLIENT_IP::'; // Replace this with the actual IP value dynamically if needed
+            document.getElementById('client-ip').innerText = clientIP;
+        }
+    </script>
+</body>
+</html>
