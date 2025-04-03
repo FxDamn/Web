@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cloudflare 500 Error Page - Internal Server Error">
+    <title>Faiq Cybersec | 500 - Internal Server Error</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gradient-orange: #ff6b35;
+            --gradient-red: #dd3e3e;
+            --glass-bg: rgba(40, 40, 40, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .error-code {
+            background: linear-gradient(45deg, var(--gradient-orange), var(--gradient-red));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .subheading {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .error-details {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+
+        .message {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .retry-button {
+            background: linear-gradient(45deg, var(--gradient-orange), var(--gradient-red));
+            border: none;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(221, 62, 62, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .error-code {
+                font-size: 6rem;
+            }
+            
+            .subheading {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-code {
+                font-size: 4rem;
+            }
+            
+            .subheading {
+                font-size: 1.25rem;
+            }
+            
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1 class="error-code">500</h1>
+        <h2 class="subheading">Internal Server Error</h2>
+        
+        <div class="error-details">
+            ::CLOUDFLARE_ERROR_500S_BOX::
+        </div>
+
+        <p class="message">
+            Oops! Something went wrong on our end. Our team has been notified and we're working to fix it.
+            Please try again in a few moments.
+        </p>
+
+        <button class="retry-button" onclick="window.location.reload()" aria-label="Try again">
+            Try Again
+        </button>
+    </main>
+
+    <script>
+        // 3D Tilt Effect
+        const container = document.querySelector('.container');
+        let isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+        if (isDesktop) {
+            container.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = container.getBoundingClientRect();
+                const x = (e.clientX - left - width / 2) / width;
+                const y = (e.clientY - top - height / 2) / height;
+            });
+
+            container.addEventListener('mouseleave', () => {
+            });
+        }
+
+        // Accessibility: Keyboard focus for button
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && document.activeElement === container.querySelector('.retry-button')) {
+                window.location.reload();
+            }
+        });
+    </script>
+</body>
+</html>
